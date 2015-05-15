@@ -67,7 +67,7 @@ class SlackService extends DestinationService
         $data = $this->pullRequest->getData();
         $message = $data['content']['raw'];
         foreach ($user_name_dict as $bitbucket_name => $slack_name) {
-            $message = preg_replace("!{$bitbucket_name}!", $slack_name, $message);
+            $message = preg_replace("!{$bitbucket_name}!", "<{$slack_name}>", $message);
         }
         $message = preg_replace('!\!\[[^]]+\]\(([^)]+)\)!', '\1', $message);
         if ($message) {
