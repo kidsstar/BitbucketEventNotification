@@ -87,7 +87,7 @@ class SlackService extends DestinationService
 
         $notify = '';
         if ($this->pullRequest instanceof PullRequestCreated) {
-            $notify .= sprintf("Pull request has been created by %s. Please review.", $data['author']['display_name']);
+            $notify .= sprintf("Pull request has been created by %s.", $data['author']['display_name']);
             $notify .= sprintf("\nhttps://bitbucket.org/%s/pull-request/%d", $data['destination']['repository']['full_name'], $data['id']);
         } else if ($this->pullRequest instanceof PullRequestDeclined) {
             $notify .= sprintf("Pull request has been declined by %s.", $data['author']['display_name']);
@@ -97,7 +97,7 @@ class SlackService extends DestinationService
         } else if ($this->pullRequest instanceof PullRequestMerged) {
             $notify .= sprintf("Pull request has been merged by %s. Good job.", $data['author']['display_name']);
         } else if ($this->pullRequest instanceof PullRequestUpdated) {
-            $notify .= sprintf("Pull request has been updated by %s. Please re-review.", $data['author']['display_name']);
+            $notify .= sprintf("Pull request has been updated by %s.", $data['author']['display_name']);
         } else {
             $notify = null;
         }
